@@ -8,12 +8,12 @@ const getCode = async (req, res) => {
     active: true
   })
 
-  // if (existingOtp) {
-  //   res.send(existingOtp)
-  // } else {
-  const otp = await OtpModel.create({ email })
-  res.send(otp.ops[0])
-  // }
+  if (existingOtp) {
+    res.send(existingOtp)
+  } else {
+    const otp = await OtpModel.create({ email })
+    res.send(otp.ops[0])
+  }
 }
 
 const verify = async (req, res) => {
